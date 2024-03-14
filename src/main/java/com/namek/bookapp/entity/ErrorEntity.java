@@ -1,8 +1,11 @@
 package com.namek.bookapp.entity;
 
+import lombok.Builder;
+
 import java.beans.Transient;
 import java.time.LocalDateTime;
 
+@Builder
 public record ErrorEntity(
         LocalDateTime localDateTime,
         String message,

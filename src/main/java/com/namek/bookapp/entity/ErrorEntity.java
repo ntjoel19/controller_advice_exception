@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Builder
 public record ErrorEntity(
-        LocalDateTime localDateTime,
+        LocalDateTime timeStamp,
         String message,
         @Transient
         String errorAuthor,

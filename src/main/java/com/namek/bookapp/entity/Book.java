@@ -2,10 +2,7 @@ package com.namek.bookapp.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @Builder
@@ -17,12 +14,16 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @JsonProperty("book_author")
+
+    @Column(nullable = false)
     private String author;
-    @JsonProperty("book_title")
+
+    @Column(nullable = false)
     private String title;
-    @JsonProperty("book_date")
+
+    @Column(nullable = false)
     private String date;
-    @JsonProperty("book_editor")
+
+    @Column(nullable = false)
     private String editor;
 }

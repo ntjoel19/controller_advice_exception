@@ -13,7 +13,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(BookNotFoundException.class)
     public ResponseEntity<ErrorEntity> bookNotFoundHandler(BookNotFoundException exception) {
         ErrorEntity error = ErrorEntity.builder()
-                .localDateTime(LocalDateTime.now())
+                .timeStamp(LocalDateTime.now())
                 .message(exception.getMessage())
                 .httpStatus(HttpStatus.NOT_FOUND.value())
                 .build();
@@ -24,7 +24,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(BadRequestException.class)
     public ResponseEntity<ErrorEntity> badRequestHandler(BadRequestException exception) {
         ErrorEntity error = ErrorEntity.builder()
-                .localDateTime(LocalDateTime.now())
+                .timeStamp(LocalDateTime.now())
                 .message(exception.getMessage())
                 .httpStatus(HttpStatus.BAD_REQUEST.value())
                 .build();
@@ -34,7 +34,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(RuntimeException.class)
     public ResponseEntity<ErrorEntity> runtimeExceptionHandler(RuntimeException exception) {
         ErrorEntity error = ErrorEntity.builder()
-                .localDateTime(LocalDateTime.now())
+                .timeStamp(LocalDateTime.now())
                 .message(exception.getMessage())
                 .httpStatus(HttpStatus.FORBIDDEN.value())
                 .build();

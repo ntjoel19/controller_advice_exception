@@ -4,15 +4,17 @@ import com.namek.bookapp.entity.Book;
 import com.namek.bookapp.exception.BadRequestException;
 import com.namek.bookapp.exception.BookNotFoundException;
 import com.namek.bookapp.repository.BookRepository;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Slf4j
 @Service
 public class BookServiceImp implements BookService{
 
-    @Autowired
     private BookRepository bookRepository;
 
     public Book saveBook(Book book) {
@@ -28,13 +30,8 @@ public class BookServiceImp implements BookService{
                 .orElseThrow(() -> new BookNotFoundException(id)));
     }
 
-    public Iterable<Book> getBook() {
-        try {
-            return bookRepository.findAll();
-        } catch (Exception exception) {
-            throw new RuntimeException(exception.getMessage());
-        }
-
+    public Iterable<Book> getBook() throws RuntimeException {
+        return bookRepository.findAll();
     }
 
     public  void deleteBook(final Integer id) {
